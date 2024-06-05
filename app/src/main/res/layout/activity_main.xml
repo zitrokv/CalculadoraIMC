@@ -1,28 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/welcomeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_activity_click_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!-- altura -->
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:padding="14dp"
+    android:orientation="horizontal">
+        <EditText
+            android:id="@+id/alturaEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="150"
+            android:textAlignment="gravity"
+            android:layout_weight="1"
 
-    <Button
-        android:id="@+id/clickButton"
+            />
+
+
+        <TextView
+            android:id="@+id/alturaCMTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="cm"
+            android:gravity="center"
+            android:textAlignment="gravity"
+            android:layout_weight="4"
+            />
+    </LinearLayout>
+
+
+    <!-- peso -->
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Click"
-        app:layout_constraintTop_toBottomOf ="@+id/welcomeTextView"
-        android:layout_marginHorizontal="60dp"
-        />
+        android:layout_marginHorizontal="23dp"
+        android:layout_marginVertical="30dp"
+        android:orientation="horizontal"
+        android:textAlignment="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/menosButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:text="-"/>
+
+
+        <TextView
+            android:id="@+id/pesoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="12dp"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:text="70 kg"
+            />
+
+        <Button
+            android:id="@+id/masButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:textSize="24sp"
+            android:text="+" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="23dp"
+        android:layout_marginVertical="122dp"
+        android:orientation="vertical"
+        android:textAlignment="center" >
+
+
+        <TextView
+            android:id="@+id/resDesTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:text="Resultado"
+            />
+
+        <TextView
+            android:id="@+id/resNumTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:text="0.00"
+            />
+
+        <Button
+            android:id="@+id/CalcularButton"
+            android:text="Calcular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="80dp"
+            android:layout_marginTop="30dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
