@@ -117,6 +117,13 @@
             android:layout_marginHorizontal="80dp"
             android:layout_marginTop="30dp"/>
 
+        <ImageView
+            android:id="@+id/imagenImgView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/img"
+            ></ImageView>
 
     </LinearLayout>
 

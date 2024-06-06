@@ -1,11 +1,11 @@
 package com.example.calculadoraimc
 
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Rect
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.SeekBar
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.math.pow
 
@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     var vez = 1
     var datoPeso = 80
     var datoAltura = 160
+    lateinit var imagenImgView: ImageView
+    //var imagenImgView = findViewById<ImageView>(R.id.imagenImgView)
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         masButton = findViewById(R.id.masButton)
         calcularButton = findViewById(R.id.CalcularButton)
 
+        imagenImgView = findViewById<ImageView>(R.id.imagenImgView)
 
         resfrescaAltura()
         resfrescaPeso()
@@ -69,8 +73,21 @@ class MainActivity : AppCompatActivity() {
                     else -> "datos incorrectos"
                 }
 
+            val bitmap = BitmapFactory.decodeResource(resources, R.id.imagenImgView)
 
+            val anchuraImg = bitmap.width / 4 // Asume que la imagen tiene 4 figuras de igual tamaño
 
+            val rect: Rect = when (datoPeso / (datoAltura/100f).pow(2)) {
+                in (0f..18.5f)  -> Rect(0, 0, anchuraImg, bitmap.height)
+                in (18.5..24.9) -> Rect(anchuraImg, 0, 2 * anchuraImg, bitmap.height)
+                in (25.0..29.9) -> Rect(2 * anchuraImg, 0, 3 * anchuraImg, bitmap.height)
+                else -> Rect(3 * anchuraImg, 0, 4 * anchuraImg, bitmap.height)
+            }
+
+             //val rect: Rect = Rect(0,0, bitmap.width, bitmap.height)
+
+            val croppedBitmap = Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
+            imagenImgView.setImageBitmap(croppedBitmap)
 
         }
 
@@ -78,7 +95,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+   /* fun imagenIMC(datoIMC :Float){
+        var img = R.drawable.img
 
+        img
+
+        when( datoIMC) {
+            in (0f..18.5f) -> "Bajo"
+            in (18.5f..24.9f) -> "Normal"
+            in (25f..29.9f) -> "Sobrepeso"
+            in (29.9f..800f) -> "Obeso"
+            else -> "datos incorrectos"
+        }
+    }*/
     fun resfrescaAltura(){
         alturaEditText.setText(datoAltura.toString())
     }
